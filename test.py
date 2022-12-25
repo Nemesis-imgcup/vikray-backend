@@ -1,8 +1,13 @@
 from fastapi import FastAPI, HTTPException
-from google.oauth2.credentials import *
+import requests
 from googleapiclient.discovery import build
-import google.auth.transport.requests
+import google.oauth2.credentials
+import google_auth_oauthlib.flow
+import googleapiclient.discovery
 from google.oauth2.id_token import fetch_id_token, verify_oauth2_token
+
+client_id = "109066387563-ssbpapni2egmjl54p1vgfpb4qjhi0g3c.apps.googleusercontent.com"
+callback_url = "http://127.0.0.1:8000/callback"
 
 app = FastAPI()
 
@@ -11,9 +16,6 @@ def root():
     return {"message": "Hello Nemesis, I am Vikray    नमस्कार, विक्रय में आपका स्वागत है"}
 
 def get_google_auth_url():
-    client_id = "109066387563-ssbpapni2egmjl54p1vgfpb4qjhi0g3c.apps.googleusercontent.com"
-    callback_url = "http://127.0.0.1:8000/callback"
-
     # Using the client ID and callback URL to create the Google login URL
     google_auth_url = "https://accounts.google.com/o/oauth2/v2/auth?client_id=109066387563-ssbpapni2egmjl54p1vgfpb4qjhi0g3c.apps.googleusercontent.com&redirect_uri=http://127.0.0.1:8000/callback&response_type=code&scope=openid%20email%20profile"
     return google_auth_url
@@ -58,5 +60,5 @@ def callback(code: str):
     # Using the authorization code to request an access token and refresh token from Google
     credentials = get_credentials_from_google(code)
     # Retrieving the user's profile information
-    # user_info = get_user_info(credentials)
-    return f"done {code}"
+    user_info = get_user_info(credentials)
+    return user_info
