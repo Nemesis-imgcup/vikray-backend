@@ -59,8 +59,11 @@ def callback():
 
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
-    print(session)
-    return redirect("/protected_area")
+    session["email"] = id_info.get("email")
+    session["picture"] = id_info.get("picture")
+    session["locale"] = id_info.get("locale")
+    print(id_info)
+    return id_info
 
 
 @app.route("/")
@@ -71,7 +74,7 @@ def index():
 @app.route("/protected_area")
 @login_is_required
 def protected_area():
-    return session
+    return f"{session}"
 
 
 if __name__ == "__main__":
