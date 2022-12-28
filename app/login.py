@@ -1,15 +1,13 @@
+from app import app
+
 import os
 import pathlib
-
 import requests
-from flask import Flask, session, abort, redirect, request
+from flask import session, abort, redirect, request
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 import google.auth.transport.requests
-
-app = Flask("Vikray")
-app.secret_key = "Nemesis1234"
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
@@ -57,19 +55,5 @@ def callback():
         request=token_request,
         audience=GOOGLE_CLIENT_ID
     )
-
-    session["google_id"] = id_info.get("sub")
-    session["name"] = id_info.get("name")
-    session["email"] = id_info.get("email")
-    session["picture"] = id_info.get("picture")
-    session["locale"] = id_info.get("locale")
-    print(id_info)
+    
     return id_info
-
-
-@app.route("/")
-def index():
-    return "Hello! Welcome to Vikray"
-
-if __name__ == "__main__":
-    app.run(debug=True)
