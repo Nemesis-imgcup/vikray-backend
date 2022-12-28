@@ -43,10 +43,10 @@ def get_one(condition):
     response["_id"] = str(response["_id"])
     return response
 
-def update(data):
-    data = dict(data)
-    response = collection.update_one({"username":data["username"]}, {"$set":{"name":data["name"]}})
-    return response.modified_count
+# def update(data):
+#     data = dict(data)
+#     response = collection.update_one({"username":data["username"]}, {"$set":{"name":data["name"]}})
+#     return response.modified_count
 
 def delete(username):
     response = collection.delete_one({"username":username})
