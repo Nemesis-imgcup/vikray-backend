@@ -1,0 +1,16 @@
+{
+    "at_hash": "y34fZRzg7RfXXhSMBOIWow",
+    "aud": "109066387563-ssbpapni2egmjl54p1vgfpb4qjhi0g3c.apps.googleusercontent.com",
+    "azp": "109066387563-ssbpapni2egmjl54p1vgfpb4qjhi0g3c.apps.googleusercontent.com",
+    "email": "shymal.sawan@gmail.com",
+    "email_verified": true,
+    "exp": 1672150153,
+    "family_name": "Bhattacharya",
+    "given_name": "Sawan",
+    "iat": 1672146553,
+    "iss": "https://accounts.google.com",
+    "locale": "en-GB",
+    "name": "Sawan Bhattacharya",
+    "picture": "https://lh3.googleusercontent.com/a/AEdFTp6QKfrCLLFo-PkbQIb9dOsjNSVX7baMHWA-34U8yz8=s96-c",
+    "sub": "102333923533566578245"
+}

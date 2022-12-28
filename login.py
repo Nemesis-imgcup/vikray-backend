@@ -14,7 +14,8 @@ app.secret_key = "Nemesis1234"
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 GOOGLE_CLIENT_ID = "109066387563-ssbpapni2egmjl54p1vgfpb4qjhi0g3c.apps.googleusercontent.com"
-client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
+client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "json\client_secret.json")
+print(client_secrets_file)
 
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
@@ -68,14 +69,7 @@ def callback():
 
 @app.route("/")
 def index():
-    return redirect("/login")
-
-
-@app.route("/protected_area")
-@login_is_required
-def protected_area():
-    return f"{session}"
-
+    return "Hello! Welcome to Vikray"
 
 if __name__ == "__main__":
     app.run(debug=True)
